@@ -1,6 +1,14 @@
 import Image from 'next/image';
 
-export default function PostDetailImage({ imageUrl, alt="投稿画像" }) {
+interface PostDetailImageProps {
+  imageUrl?: string;
+  alt?: string;
+}
+
+export default function PostDetailImage({
+  imageUrl,
+  alt="投稿画像",
+ }: PostDetailImageProps): JSX.Element | null {
   if (!imageUrl) return null;
   return (
     <Image

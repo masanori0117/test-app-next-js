@@ -1,25 +1,37 @@
 'use client';
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
+
+interface FormData {
+  name: string;
+  email: string;
+  content: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  content?: string;
+}
 
 export default function InquiryForm() {
-  const initialFormData = {
+  const initialFormData: FormData = {
     name: '',
     email: '',
     content: '',
   };
 
-  const [formData, setFormData] = useState(initialFormData);
-  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const validateForm = () => {
-    const newErrors = {};
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
     const name = formData.name.trim();
     const email = formData.email.trim();
     const content = formData.content.trim();
@@ -46,7 +58,7 @@ export default function InquiryForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitted(false);
     if (!validateForm()) return;
@@ -180,4 +192,4 @@ export default function InquiryForm() {
       </form>
     </div>
   );
-}
+} 

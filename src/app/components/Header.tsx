@@ -8,4 +8,4 @@ export default function Header() {
       <Link href="/inquiry" className="text-white font-extrabold">お問い合わせ</Link>
     </header>
   );
-}
+} 

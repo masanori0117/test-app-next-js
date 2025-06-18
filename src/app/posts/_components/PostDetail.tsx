@@ -1,25 +1,12 @@
-import PostDetailImage from '../../components/PostDetailImage';
+'use client';
+import PostDetailImage from './PostDetailImage';
+import { Post } from '../../types/post';
 
-export default async function PostDetailPage({ params }) {
-  const postId = Number(params.id);
+interface PostDetailProps {
+  post: Post;
+}
 
-  let post = null;
-
-  try {
-    const response = await fetch(`https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${postId}`, {
-      // キャッシュを避けるオプション（オプション）
-      cache: 'no-store',
-    });
-    const data = await response.json();
-    post = data.post;
-  } catch (error) {
-    console.error('データ取得失敗:', error);
-  }
-
-  if (!post) {
-    return <div className="p-4">投稿が見つかりませんでした。</div>;
-  }
-
+export default function PostDetail({ post }: PostDetailProps): JSX.Element {
   return (
     <div className="p-4 mb-6 flex flex-col">
       <PostDetailImage imageUrl={post.thumbnailUrl} />

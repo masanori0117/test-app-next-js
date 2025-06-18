@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
-import { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,11 +9,7 @@ export const metadata = {
   description: "Test-App-NextJs",
 };
 
-interface RootLayoutProps {
-  children: ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
+export default function RootLayout({ children }) {
   return (
     <html lang="ja">
       <body className={`${inter.className} min-h-screen bg-white text-black`}>
@@ -25,4 +20,4 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
       </body>
     </html>
   );
-} 
+}

@@ -5,7 +5,7 @@ export const metadata = {
   description: 'お問い合わせページ',
 };
 
-export default function InquiryPage(): JSX.Element {
+export default function InquiryPage() {
   return (
     <div className="min-h-screen">
       <InquiryForm />

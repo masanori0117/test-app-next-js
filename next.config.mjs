@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['placehold.jp'],
+    domains: ['images.microcms-assets.io'],
   },
 };
 

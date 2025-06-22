@@ -8,20 +8,25 @@ interface PostDetailPageProps {
   };
 }
 
-export default async function PostDetailPage({ params }: PostDetailPageProps): Promise<JSX.Element> {
-  const postId = Number(params.id);
+export default async function PostDetailPage({ params }: PostDetailPageProps) {
+  const postId = params.id;
 
   try {
-    const response = await fetch(`https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${postId}`, {
-      cache: 'no-store',
+    const response = await fetch(`https://sampleeeeeee.microcms.io/api/v1/posts/${postId}`, {
+      headers: {
+        'X-MICROCMS-API-KEY': process.env
+          .NEXT_PUBLIC_MICROCMS_API_KEY as string,
+      },
     });
 
     if (!response.ok) {
+      if (response.status === 404) {
+        notFound();
+      }
       throw new Error(`HTTP error: ${response.status}`);
     }
 
-    const data: {post: Post } = await response.json();
-    const post = data.post
+    const post: Post = await response.json();
 
     if (!post) {
       notFound();

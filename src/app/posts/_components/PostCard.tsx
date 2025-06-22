@@ -5,7 +5,7 @@ interface PostCardProps {
   post: Post;
 }
 
-export default function PostCard({ post }: PostCardProps): JSX.Element {
+export default function PostCard({ post }: PostCardProps) {
   return (
     <Link className="block text-inherit hover:text-inherit no-underline" href={`/posts/${post.id}`}>
       <div className="border border-gray-300 p-4 mb-6 shadow-sm flex flex-col">
@@ -16,10 +16,10 @@ export default function PostCard({ post }: PostCardProps): JSX.Element {
           <div className="flex gap-2">
             {post.categories?.map((category) => (
               <span
-                key={category}
+                key={category.id}
                 className="text-blue-700 border border-blue-700 text-xs px-2 py-1 rounded font-medium"
               >
-                {category}
+                {category.name}
               </span>
             ))}
           </div>

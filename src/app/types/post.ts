@@ -4,6 +4,6 @@ export interface Post {
     content: string;
     createdAt: string;
     updatedAt: string;
-    thumbnailUrl?: string;
-    categories?: string[];
+    categories?: { id: string; name: string }[]
+    thumbnail?: { url: string; height: number; width: number }
   }

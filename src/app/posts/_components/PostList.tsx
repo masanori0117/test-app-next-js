@@ -15,6 +15,7 @@ export default function PostList({ posts, loading = false }: PostListProps): JSX
       </div>
     );
   }
+  console.log(posts);
 
   if (!posts || !posts.length) {
     return <div className="p-4 text-gray-600">記事が見つかりませんでした</div>;
